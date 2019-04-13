@@ -10,7 +10,7 @@ import GuestsList from './components/GuestsList';
 import Contacts from './components/Contacts';
 import Schedule from './components/Schedule';
 
-const { Header, Sider, Content } = Layout;
+const { Sider } = Layout;
 const Main = () => (
   <main>
     <Switch>
