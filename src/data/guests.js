@@ -26,7 +26,7 @@ const Guests = [
         post: 'Отдел разработки',
         phone: '8(888)-888-88-88',
         username: '@sagoskatt',
-        checked_in: true,
+        checked_in: false,
         additional: 2
     },
     {
@@ -46,7 +46,7 @@ const Guests = [
         post: 'Отдел разработки',
         phone: '8(888)-888-88-88',
         username: '@sagoskatt',
-        checked_in: true,
+        checked_in: false,
         additional: 2
     },
     {
@@ -56,7 +56,7 @@ const Guests = [
         post: 'Отдел разработки',
         phone: '8(888)-888-88-88',
         username: '@sagoskatt',
-        checked_in: true,
+        checked_in: null,
         additional: 2
     },
     {
@@ -76,7 +76,7 @@ const Guests = [
         post: 'Отдел разработки',
         phone: '8(888)-888-88-88',
         username: '@sagoskatt',
-        checked_in: true,
+        checked_in: null,
         additional: 2
     },
     {
@@ -96,7 +96,7 @@ const Guests = [
         post: 'Отдел разработки',
         phone: '8(888)-888-88-88',
         username: '@sagoskatt',
-        checked_in: true,
+        checked_in: null,
         additional: 2
     }
 ]

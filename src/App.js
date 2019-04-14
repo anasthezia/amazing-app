@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch,} from 'react-router-dom'
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Icon} from 'antd';
 import "antd/dist/antd.css";
 import './App.css';
 
@@ -10,7 +10,11 @@ import GuestsList from './components/GuestsList';
 import Contacts from './components/Contacts';
 import Schedule from './components/Schedule';
 
-const { Sider } = Layout;
+// const { Sider } = Layout;
+const {
+  Header, Footer, Sider, Content,
+} = Layout;
+
 const Main = () => (
   <main>
     <Switch>
@@ -92,7 +96,14 @@ class App extends Component {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Main/>
+        <Layout>
+        <Header>Header</Header>
+        <Content>
+          <Main/>
+        </Content>
+        <Footer>Footer</Footer>
+      </Layout>
+     
         </Layout>
       </div>
     );
