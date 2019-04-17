@@ -97,11 +97,11 @@ class App extends Component {
           </Menu>
         </Sider>
         <Layout>
-        <Header>Header</Header>
+        {/* <Header>Header</Header> */}
         <Content>
           <Main/>
         </Content>
-        <Footer>Footer</Footer>
+        {/* <Footer>Footer</Footer> */}
       </Layout>
      
         </Layout>
