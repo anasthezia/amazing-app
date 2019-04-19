@@ -22,11 +22,11 @@ class GuestsList extends React.Component {
               <div>{item.username}</div>
             </div>
             <div classname="guest__checkin">
-              {item.checked_in === true &&
-                <Icon type="check-circle" />
+              {(item.checked_in === true &&
+              <Icon type="check-circle" /> )
                 ||
-                item.checked_in === false && 
-                <Icon type="close-circle"/>
+                (item.checked_in === false && 
+                <Icon type="close-circle"/>)
               }
               { item.checked_in === true && item.additional >0 &&
                 <div classname="guwst__checked-count">{item.additional}</div>
