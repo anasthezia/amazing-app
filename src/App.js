@@ -60,7 +60,7 @@ class App extends Component {
         >
             <Icon
               className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              type={this.state.collapsed ? 'left' : 'right'}
               onClick={this.toggle}
             />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
