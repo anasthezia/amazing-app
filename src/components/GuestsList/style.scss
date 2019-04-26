@@ -1,0 +1,26 @@
+.guests-list {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+.guest {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: center;
+
+    &__data {
+        width: 50%;
+        flex-grow: 1;
+        padding: 0 2rem;
+    }
+    &__contacts {
+        width: 25%;
+
+    }
+    &__checkin {
+        width: 10%;
+        text-align: center;
+    }
+}

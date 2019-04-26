@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Link, Switch,} from 'react-router-dom'
+import { Route, Link, Switch} from 'react-router-dom'
 import { Layout, Menu, Icon} from 'antd';
 import "antd/dist/antd.css";
-import './App.css';
+import './App.scss';
 
 import Budget from './components/Budget';
 import Todo from './components/Todo';
@@ -11,9 +11,7 @@ import Contacts from './components/Contacts';
 import Schedule from './components/Schedule';
 
 // const { Sider } = Layout;
-const {
-  Header, Footer, Sider, Content,
-} = Layout;
+const {Sider, Content} = Layout;
 
 const Main = () => (
   <main>

@@ -15,11 +15,13 @@ class Schedule extends React.Component {
   render() {
     return (
 <section style={ sectionStyle }>
-          <h1>Schedule</h1>
-          <Card title={EventData.title} bordered={false} style={{ width: 300 }}>
-      <p>{EventData.describtion}</p>
+          <div> 
+            <h1>{EventData.title}</h1>
+            <p>{EventData.describtion}</p>
+          </div>
 
-    </Card>
+        
+        
 <div className="event-data">
 <div>Дата: {EventData.date} </div>
 <div>Место: {EventData.place} </div>
