@@ -1,6 +1,8 @@
 import React from 'react'
-import { Affix, Calendar, Table, Divider, Form, DatePicker, TimePicker, Button, Input, Drawer, Icon} from 'antd';
+import { Affix, Calendar, Table, Button, Drawer, Icon, Row, Col} from 'antd';
+
 import TodoList from '../../data/todo-list';
+import TodoForm from './addTodoForm';
 
 function getListData(value) {
   const listData = TodoList.filter(item => item.date === (value.format("MMM Do YY")));
@@ -47,18 +49,19 @@ const columns = [{
   title: 'Content',
   dataIndex: 'content',
   key: 'content',
-}, 
-{
-  title: 'Action',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-      <a href="javascript:;">Invite {record.name}</a>
-      <Divider type="vertical" />
-      <a href="javascript:;">Delete</a>
-    </span>
-  ),
-}];
+}
+// {
+//   title: 'Action',
+//   key: 'action',
+//   render: (text, record) => (
+//     <span>
+//       <a href="javascript:;">Invite {record.name}</a>
+//       <Divider type="vertical" />
+//       <a href="javascript:;">Delete</a>
+//     </span>
+//   ),
+// }
+];
 
 class Todo extends React.Component {
   state = { visible: false };
@@ -75,58 +78,36 @@ class Todo extends React.Component {
     });
   };
    
-  handleSubmit = (e, values) => {
-    e.preventDefault();
-    console.log('Received values of form: ', values);
-  }
-
   render() {
     return (
-      <div> 
-        <Form  layout='inline' onSubmit={this.handleSubmit}>
-            <Form.Item>
-              <DatePicker  format="DD-MM-YYYY" />
-            </Form.Item>
-            <Form.Item>
-              <TimePicker format = 'HH:mm' />
-            </Form.Item>
-            <Form.Item>
-              <Input  placeholder="Что нужно сделать" />
-            </Form.Item>
-            <Form.Item>
-              <Button
-                type="primary"
-                htmlType="submit"
+      <Row type="flex" justify="center">
+        <Col span={18}>
+          <TodoForm/>
+              <Affix offsetTop={120} >
+                <Button type="primary" onClick={this.showDrawer}>
+                  <Icon type="calendar" />        
+                </Button>  
+              </Affix>
+              <Table 
+                columns={columns} 
+                dataSource={TodoList} 
+                rowClassName={(record, index) => ((record.done === true) && 'todo-row--done')}      
+              />
+              <Drawer
+                width={640}
+                title="Calendar"
+                placement="right"
+                closable={false}
+                onClose={this.onClose}
+                visible={this.state.visible}
               >
-                Добавить
-              </Button>
-              </Form.Item>
-          </Form>
-
-          <Affix offsetTop={120} >
-            <Button type="primary" onClick={this.showDrawer}>
-              <Icon type="calendar" />        
-            </Button>  
-          </Affix>
-          <Table 
-            columns={columns} 
-            dataSource={TodoList} 
-            rowClassName={(record, index) => ((record.done === true) && 'todo-row--done')}      
-          />
-          <Drawer
-            width={640}
-            title="Calendar"
-            placement="right"
-            closable={false}
-            onClose={this.onClose}
-            visible={this.state.visible}
-          >
-            <Calendar 
-              dateCellRender={dateCellRender} 
-              monthCellRender={monthCellRender} 
-            /> 
-          </Drawer>
-        </div>
+                <Calendar 
+                  dateCellRender={dateCellRender} 
+                  monthCellRender={monthCellRender} 
+                /> 
+              </Drawer>
+          </Col>
+        </Row>
     )  
   }
 }

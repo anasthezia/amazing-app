@@ -1,7 +1,7 @@
 import React from 'react';
-import {Avatar, Icon, Row, Col  } from 'antd';
+import {Row, Col} from 'antd';
 import Guests from '../../data/guests';
-import GuestsListImem from './listItem'
+import GuestsListImem from './listItem';
 import './style.scss';
 
 class GuestsList extends React.Component {
@@ -9,7 +9,7 @@ class GuestsList extends React.Component {
     return (
       <div>
         <Row type="flex" justify="center">
-        <h2>Список гостей</h2>
+          <h2>Список гостей</h2>
         </Row>
         <Row type="flex" justify="center">
           <Col span={18}>
