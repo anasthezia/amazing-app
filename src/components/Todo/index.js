@@ -1,8 +1,12 @@
 import React from 'react'
-import { Affix, Calendar, Table, Button, Drawer, Icon, Row, Col} from 'antd';
-
+import { Calendar, Table,  Icon, Row, Col} from 'antd';
+import Drawer from '@material-ui/core/Drawer';
+import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Button';
 import TodoList from '../../data/todo-list';
 import TodoForm from './addTodoForm';
+import './style.scss';
+
 
 function getListData(value) {
   const listData = TodoList.filter(item => item.date === (value.format("MMM Do YY")));
@@ -12,10 +16,10 @@ function getListData(value) {
 function dateCellRender(value, TodoList ) {
   const listData = getListData(value, TodoList);
   return (
-    <ul className="events">
+    <ul className="calendar__events-list">
       {
         listData.map(item => (
-          <li key={item.id}>
+          <li key={item.id} className="calendar__events-list-item">
             { item.content }
           </li>
         ))
@@ -64,50 +68,99 @@ const columns = [{
 ];
 
 class Todo extends React.Component {
-  state = { visible: false };
+  state = { visibleDriver1: false,  visibleDriver2: false};
 
-  showDrawer = () => {
+  showDrawer1 = () => {
     this.setState({
-      visible: true,
+      visibleDriver1: true,
     });
+    console.log('................', this.state)
   };
-  
-  onClose = () => {
+  closeDriver1 = () => {
     this.setState({
-      visible: false,
+      visibleDriver1: false,
     });
+    console.log('................', this.state)
   };
    
+  showDrawer2 = () => {
+    this.setState({
+      visibleDriver2: true,
+    });
+    console.log('................', this.state)
+  };
+  closeDriver2 = () => {
+    this.setState({
+      visibleDriver2: false,
+    });
+    console.log('................', this.state)
+  };
   render() {
     return (
       <Row type="flex" justify="center">
-        <Col span={18}>
-          <TodoForm/>
-              <Affix offsetTop={120} >
-                <Button type="primary" onClick={this.showDrawer}>
-                  <Icon type="calendar" />        
-                </Button>  
-              </Affix>
+        <Col span={18} className="todo-list">
+              <Fab className="todo-list__add-new-btn" color="secondary" aria-label="Add"  onClick={this.showDrawer2}>
+                <i className="material-icons">    
+                  add
+                </i>              
+              </Fab>
+              <Button variant="contained" color="primary"  onClick={this.showDrawer1} >
+                <i className="material-icons">
+                  calendar_today
+                </i>
+                Показать календарь
+              </Button>
               <Table 
                 columns={columns} 
                 dataSource={TodoList} 
                 rowClassName={(record, index) => ((record.done === true) && 'todo-row--done')}      
               />
               <Drawer
-                width={640}
-                title="Calendar"
-                placement="right"
-                closable={false}
-                onClose={this.onClose}
-                visible={this.state.visible}
+                anchor="right"
+                className="calendarDrawer"
+                open={this.state.visibleDriver1}
               >
-                <Calendar 
-                  dateCellRender={dateCellRender} 
-                  monthCellRender={monthCellRender} 
-                /> 
-              </Drawer>
-          </Col>
-        </Row>
+            <div
+            className="calendarDrawer__close-btn"
+            tabIndex={0}
+            role="button"
+            onClick={this.closeDriver1}
+          >             
+          <div
+            className="calendarDrawer__close-btn"
+            tabIndex={0}
+            role="button"
+            onClick={this.closeDriver1}
+          >  
+            <i className="material-icons">
+                arrow_forward
+            </i>
+          </div>
+        </div>
+          <Calendar 
+            dateCellRender={dateCellRender} 
+            monthCellRender={monthCellRender} 
+          /> 
+        </Drawer>
+        <Drawer
+          anchor="right"
+          className="formDrawer"
+          open={this.state.visibleDriver2}
+        >
+          <div
+            className="calendarDrawer__close-btn"
+            tabIndex={0}
+            role="button"
+            onClick={this.closeDriver2}
+          >             
+          <i className="material-icons">
+              arrow_forward
+          </i>
+      </div>
+      <TodoForm/>
+    </Drawer>
+  </Col>
+</Row>
     )  
   }
 }

@@ -1,0 +1,28 @@
+.calendar {
+    &__events-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    &__events-list-item {
+        font-size: .8rem;
+        line-height: 1;
+        display: block;
+    }
+}
+
+.todo-list {
+    position: relative;
+    &__add-new-btn {
+        position: fixed !important;
+        right: 2rem;
+        bottom: 2rem;
+        z-index: 1;
+    }
+}
+
+.add-todo-form {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+}
