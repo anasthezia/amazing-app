@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch} from 'react-router-dom'
 import { Layout, Menu, Icon} from 'antd';
+import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+
 import "antd/dist/antd.css";
 import './App.scss';
 
@@ -12,6 +25,8 @@ import Schedule from './components/Schedule';
 
 // const { Sider } = Layout;
 const {Sider, Content} = Layout;
+const drawerWidth = 240;
+
 
 const Main = () => (
   <main>
@@ -32,7 +47,18 @@ class App extends Component {
   state = { 
     visible: false,    
     collapsed: false,
+    open: false,
   };
+
+
+  handleDrawerOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleDrawerClose = () => {
+    this.setState({ open: false });
+  };
+
 
   onClose = () => {
     this.setState({
@@ -49,9 +75,59 @@ class App extends Component {
     return (
       <div className="App">
       <Layout>
-        <header className="App-header">
-        </header>
-        <Sider
+        <header className="App-header"/>
+        <Drawer
+          variant="permanent"
+          // className={classNames(classes.drawer, {
+          //  'drawerOpen': this.state.open,
+          //   'drawerClose': !this.state.open,
+          // })}
+          // classes={{
+          //   paper: classNames({
+          //     'drawerOpen': this.state.open,
+          //    'drawerClose': !this.state.open,
+          //   }),
+          // }}
+          open={this.state.open}
+        >
+          <div 
+          // className={classes.toolbar}
+          >
+            <IconButton onClick={this.handleDrawerClose}>
+            <ChevronLeftIcon />
+              {/* {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />} */}
+            </IconButton>
+          </div>
+          <Divider />
+          <List>
+          <ListItem button>
+                <ListItemIcon><Icon type="schedule" /></ListItemIcon>
+                <ListItemText><Link to="/schedule">
+              <span>Расписание</span>
+              </Link></ListItemText>
+              </ListItem>
+
+
+            {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))} */}
+          </List>
+          {/* <Divider /> */}
+          {/* <List>
+            {['All mail', 'Trash', 'Spam'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List> */}
+        </Drawer>
+
+
+        {/* <Sider
           trigger={null}
           collapsible
           collapsed={this.state.collapsed}
@@ -93,13 +169,11 @@ class App extends Component {
               </Link>
             </Menu.Item>
           </Menu>
-        </Sider>
+        </Sider> */}
         <Layout>
-        {/* <Header>Header</Header> */}
         <Content>
           <Main/>
         </Content>
-        {/* <Footer>Footer</Footer> */}
       </Layout>
      
         </Layout>
