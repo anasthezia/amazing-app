@@ -1,0 +1,26 @@
+.sideDrawer {
+    overflow: hidden;
+    &__header {
+        text-align: end;
+    }
+    &_open {
+        width: 240px;
+    }
+    &_close {
+        width: 58px;
+    }
+}
+
+.main-menu {}
+
+.menu-item {
+    &__link {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center
+    }
+    &__icon {
+        width: 1.4rem;
+        font-size: 1.4rem;
+    }
+}
