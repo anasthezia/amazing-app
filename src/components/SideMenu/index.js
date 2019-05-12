@@ -13,11 +13,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './style.scss';
 
 const MenuItems = [
-    // {
-    //   title: 'Главная',
-    //   link: '/',
-    //   icon: <FontAwesomeIcon icon="home" />,
-    // },
+    {
+        title: 'Главная',
+        link: '/',
+        icon: <FontAwesomeIcon icon="home" />,
+    },
     {
         title: 'План',
         link: '/schedule',
@@ -48,12 +48,11 @@ const MenuItems = [
 
 class SideMenu extends Component {
     state = {
-        open: true,
+        open: false,
     };
 
     handleDrawerToggle = () => {
         this.setState({ open: !this.state.open });
-        console.log('////////', this.state.open)
     }
 
     render() {
@@ -71,11 +70,10 @@ class SideMenu extends Component {
                         'sideDrawer_close': !this.state.open,
                     }),
                 }}
-                open={this.state.open}
             >
                 <div className="sideDrawer__header">
                     <IconButton onClick={this.handleDrawerToggle}>
-                        {this.state.open && <FontAwesomeIcon icon="chevron-left" /> || <FontAwesomeIcon icon="chevron-right" />}
+                        {(this.state.open && <FontAwesomeIcon icon="chevron-left" />) || <FontAwesomeIcon icon="chevron-right" />}
                     </IconButton>
                 </div>
                 <Divider />
