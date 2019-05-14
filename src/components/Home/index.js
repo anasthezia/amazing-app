@@ -6,7 +6,7 @@ import EventData from '../../data/event-data';
 var sectionStyle = {
     width: "100%",
     height: "100vh",
-    background: `url(/assets/images/fakedata/${EventData.bg_image}) no-repeat 0 0 /contain`
+    background: `url(/assets/images/fakedata/${EventData.bg_image}) no-repeat 0 0 /cover`
 };
 
 

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
+
 import {
   faHome,
   faClipboardList,
-  faCalculator, 
+  faCalculator,
   faColumns,
-  faTshirt, 
+  faTshirt,
   faIdCard,
   faChevronLeft,
   faChevronRight
@@ -26,11 +27,11 @@ import SideMenu from './components/SideMenu';
 
 
 library.add(
-  faHome, 
+  faHome,
   faClipboardList,
   faCalculator,
   faTshirt,
-  faColumns, 
+  faColumns,
   faIdCard,
   faChevronLeft,
   faChevronRight
@@ -40,7 +41,7 @@ library.add(
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path="/" component={Home} /> 
+      <Route exact path="/" component={Home} />
       <Route path="/budget" component={Budget} />
       <Route path="/todo" component={Todo} />
       <Route path="/guests" component={GuestsList} />
@@ -62,9 +63,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header" />
-        <SideMenu />
-        <Main />
+          <SideMenu />
+          <Main className="content" />
       </div>
     );
   }
