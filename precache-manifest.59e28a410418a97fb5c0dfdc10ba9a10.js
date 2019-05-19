@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "f9f05ff79d4a65408abf",
+    "revision": "3ecedfccae0b690e914c",
     "url": "//anasthezia.github.io/amazing-app/static/css/main.0cf6bf59.chunk.css"
   },
   {
-    "revision": "f9f05ff79d4a65408abf",
-    "url": "//anasthezia.github.io/amazing-app/static/js/main.6178349d.chunk.js"
+    "revision": "3ecedfccae0b690e914c",
+    "url": "//anasthezia.github.io/amazing-app/static/js/main.eef061dd.chunk.js"
   },
   {
     "revision": "274a8c00be232913208d",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "//anasthezia.github.io/amazing-app/static/js/2.fa62a01f.chunk.js"
   },
   {
-    "revision": "d7b900d70621efc83bcaae9069433b5d",
+    "revision": "1de6ccbc0d5b432c356b23c3dff10ceb",
     "url": "//anasthezia.github.io/amazing-app/index.html"
   }
 ];

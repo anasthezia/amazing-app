@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "//anasthezia.github.io/amazing-app/precache-manifest.02ce8e6570773354db626a6c4b5dcc21.js"
+  "//anasthezia.github.io/amazing-app/precache-manifest.59e28a410418a97fb5c0dfdc10ba9a10.js"
 );
 
 workbox.clientsClaim();
