@@ -7,7 +7,7 @@ class GuestsListImem extends React.Component {
 
     return (
       <li className="guest">
-        <Avatar shape="circle" classname="guest__image" size={64} src={`/assets/images/fakedata/${item.userpic_URL}`}  /> 
+        <Avatar shape="circle" classname="guest__image" size={64} src={`${item.userpic_URL}`}  /> 
         <div className="guest__data"> 
           <div className="guest__name">
             {item.name}

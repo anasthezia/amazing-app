@@ -8,14 +8,14 @@ import './style.scss';
 
 
 var sectionStyle = {
-    backgroundImage: `url(/assets/images/fakedata/${EventData.bg_image})`
+    backgroundImage: `url(${EventData.bg_image})`
 };
 
 
 
 const Home = () => (
     <div className="root">
-        <section className="home" style={sectionStyle} >
+        <section className="home" style={{ backgroundImage: `url(${EventData.bg_image})` }} >
             <Grid container>
 
                 <Grid item xs={12}>
