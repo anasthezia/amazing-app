@@ -7,12 +7,6 @@ import EventData from '../../data/event-data';
 import './style.scss';
 
 
-var sectionStyle = {
-    backgroundImage: `url(${EventData.bg_image})`
-};
-
-
-
 const Home = () => (
     <div className="root">
         <section className="home" style={{ backgroundImage: `url(${EventData.bg_image})` }} >
@@ -96,7 +90,7 @@ const Home = () => (
                     <div className="event-data">
                         <h3 className="event-data__title">Ответственные</h3>
                         {EventData.responsibles.map((item, index) =>
-                            <div className="event-data__row">
+                            <div className="event-data__row"  key={index}>
                                 <div className="event-data__row-title">
                                     {item.title}
                                 </div>

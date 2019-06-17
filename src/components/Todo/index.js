@@ -1,17 +1,31 @@
 import React from 'react'
-import { Calendar, Table, Row, Col } from 'antd';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
+
+import { Calendar, Row, Col } from 'antd';
+import List from '@material-ui/core/List';
 import Drawer from '@material-ui/core/Drawer';
 import Fab from '@material-ui/core/Fab';
 import Button from '@material-ui/core/Button';
 import TodoList from '../../data/todo-list';
+import { toggleTodo, VisibilityFilters } from '../../actions'
+//import * as TodoActions from '../../actions'
+
 import TodoForm from './addTodoForm';
+import TodoListItem from './todoListItem';
 import './style.scss';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import Checkbox from '@material-ui/core/Checkbox';
 
 
 function getListData(value) {
   const listData = TodoList.filter(item => item.date === (value.format("MMM Do YY")));
   return listData || [];
 }
+
+
 
 function dateCellRender(value, TodoList) {
   const listData = getListData(value, TodoList);
@@ -45,76 +59,46 @@ function monthCellRender(value) {
 }
 
 
-const columns = [{
-  title: 'Дата',
-  dataIndex: 'date',
-  key: 'date',
-}, {
-  title: 'Content',
-  dataIndex: 'content',
-  key: 'content',
-}
-  // {
-  //   title: 'Action',
-  //   key: 'action',
-  //   render: (text, record) => (
-  //     <span>
-  //       <a href="javascript:;">Invite {record.name}</a>
-  //       <Divider type="vertical" />
-  //       <a href="javascript:;">Delete</a>
-  //     </span>
-  //   ),
-  // }
-];
-
 class Todo extends React.Component {
-  state = { visibleDriver1: false, visibleDriver2: false };
 
-  showDrawer1 = () => {
-    this.setState({
-      visibleDriver1: true,
-    });
-    console.log('................', this.state)
-  };
-  closeDriver1 = () => {
-    this.setState({
-      visibleDriver1: false,
-    });
-    console.log('................', this.state)
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: TodoList
 
-  showDrawer2 = () => {
-    this.setState({
-      visibleDriver2: true,
-    });
-    console.log('................', this.state)
-  };
-  closeDriver2 = () => {
-    this.setState({
-      visibleDriver2: false,
-    });
-    console.log('................', this.state)
-  };
+    }
+  }
+  toggleTodo(id) {
+    console.log('.......................', id)
+    this.props.toggleTodo(id)
+  }
   render() {
+    const props = this.props;
+    // const { store } = this.context;
+    // const state = store.getState();
     return (
       <Row type="flex" justify="center">
         <Col span={18} className="todo-list">
+
           <Fab className="todo-list__add-new-btn" color="secondary" aria-label="Add" onClick={this.showDrawer2}>
             <i className="material-icons">
               add
-                </i>
+                       </i>
           </Fab>
           <Button variant="contained" color="primary" onClick={this.showDrawer1} >
             <i className="material-icons">
               calendar_today
-                </i>
+                       </i>
             Показать календарь
-              </Button>
-          <Table
-            columns={columns}
-            dataSource={TodoList}
-            rowClassName={(record, index) => ((record.done === true) && 'todo-row--done')}
-          />
+                     </Button>
+
+          <List dense className="list-item">
+            {this.state.todos.map((item, index, acrions) => (
+              <TodoListItem
+
+                key={item.id} item={item} />
+            ))}
+          </List>
           <Drawer
             anchor="right"
             className="calendarDrawer"
@@ -134,7 +118,7 @@ class Todo extends React.Component {
               >
                 <i className="material-icons">
                   arrow_forward
-            </i>
+                   </i>
               </div>
             </div>
             <Calendar
@@ -155,7 +139,7 @@ class Todo extends React.Component {
             >
               <i className="material-icons">
                 arrow_forward
-          </i>
+                 </i>
             </div>
             <TodoForm />
           </Drawer>
@@ -164,4 +148,19 @@ class Todo extends React.Component {
     )
   }
 }
-export default Todo
+
+const mapStateToProps = (state) => ({
+  todos: TodoList,
+  testStore: state
+})
+
+const mapDispatchToProps = dispatch => ({
+  toggleTodo: id => dispatch(toggleTodo(id))
+//  actions: bindActionCreators(TodoActions, dispatch)
+
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Todo)

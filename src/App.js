@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { Route, Switch } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+
 
 import {
   faHome,
@@ -19,7 +21,7 @@ import './App.scss';
 
 import Home from './components/Home';
 import Budget from './components/Budget';
-import Todo from './components/Todo';
+import TodoList from './components/Todo';
 import GuestsList from './components/GuestsList';
 import Contacts from './components/Contacts';
 import Schedule from './components/Schedule';
@@ -43,7 +45,7 @@ const Main = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/budget" component={Budget} />
-      <Route path="/todo" component={Todo} />
+      <Route path="/todo" component={TodoList} />
       <Route path="/guests" component={GuestsList} />
       <Route path="/contacts" component={Contacts} />
       <Route path="/schedule" component={Schedule} />
@@ -52,19 +54,15 @@ const Main = () => (
 )
 
 
-class App extends Component {
 
-  state = {
-    visible: false,
-    collapsed: false,
-    open: false,
-  };
+class App extends Component {
 
   render() {
     return (
+
       <div className="App">
-          <SideMenu />
-          <Main className="content" />
+        <SideMenu />
+        <Main className="content" />
       </div>
     );
   }

@@ -21,9 +21,11 @@
     "react-dev-utils": "^9.0.1",
     "react-dom": "^16.8.6",
     "react-gsap": "^1.2.0",
+    "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "react-scrollmagic": "^2.1.0"
+    "react-scrollmagic": "^2.1.0",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
