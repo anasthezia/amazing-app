@@ -21,7 +21,8 @@ import './App.scss';
 
 import Home from './components/Home';
 import Budget from './components/Budget';
-import TodoList from './components/Todo';
+import Todo from './components/Todo';
+// import VisibcleTodoList from './containers/VisibleTodoList'
 import GuestsList from './components/GuestsList';
 import Contacts from './components/Contacts';
 import Schedule from './components/Schedule';
@@ -45,7 +46,7 @@ const Main = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/budget" component={Budget} />
-      <Route path="/todo" component={TodoList} />
+      <Route path="/todo" component={Todo} />
       <Route path="/guests" component={GuestsList} />
       <Route path="/contacts" component={Contacts} />
       <Route path="/schedule" component={Schedule} />

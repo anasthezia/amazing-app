@@ -8,7 +8,7 @@ const todos = (state = TodoList, action) => {
                 ...state,
                 {
                     id: action.id,
-                    content: action.text,
+                    content: action.content,
                     done: false
                 }
             ]

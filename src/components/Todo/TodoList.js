@@ -1,17 +1,18 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
-import Todo from './Todo'
+import List from '@material-ui/core/List';
+import TodoListItem from './todoListItem'
 
 const TodoList = ({ todos, toggleTodo }) => (
-    <ul>
+    <List dense className="list-item">
         {todos.map(todo =>
-            <Todo
+            <TodoListItem
                 key={todo.id}
                 {...todo}
                 onClick={() => toggleTodo(todo.id)}
             />
         )}
-    </ul>
+    </List>
 )
 
 // TodoList.propTypes = {
