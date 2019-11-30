@@ -1,16 +1,44 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
-import List from '@material-ui/core/List';
+import { connect } from 'react-redux'
+import List from '@material-ui/core/List'
+
 import TodoListItem from './todoListItem'
+import {VisibilityFilters, toggleTodo} from '../../actions'
+
+
+
+// const getVisibleTodos = (todos, filter) => {
+//     switch (filter) {
+//         case VisibilityFilters.SHOW_ALL:
+//             return todos
+//         case VisibilityFilters.SHOW_COMPLETED:
+//             return todos.filter(t => t.done)
+//         case VisibilityFilters.SHOW_ACTIVE:
+//             return todos.filter(t => !t.done)
+//         default:
+//             throw new Error('Unknown filter: ' + filter)
+//     }
+// }
+
 
 const TodoList = ({ todos, toggleTodo }) => (
     <List dense className="list-item">
-        {todos.map(todo =>
+                {todos.filter(t => !t.done).map(todo =>
             <TodoListItem
                 key={todo.id}
                 {...todo}
                 onClick={() => toggleTodo(todo.id)}
             />
+
+            )}
+            <div>Показать все</div>
+        {todos.filter(t => t.done).map(todo =>
+            <TodoListItem
+                key={todo.id}
+                {...todo}
+                onClick={() => toggleTodo(todo.id)}
+            />
+
         )}
     </List>
 )
@@ -24,4 +52,18 @@ const TodoList = ({ todos, toggleTodo }) => (
 //   toggleTodo: PropTypes.func.isRequired
 // }
 
-export default TodoList
+// export default TodoList
+
+const mapStateToProps = state => ({
+    // todos: getVisibleTodos(state.todos, state.visibilityFilter)
+    todos: state.todos
+})
+
+const mapDispatchToProps = dispatch => ({
+    toggleTodo: id => dispatch(toggleTodo(id))
+})
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(TodoList)

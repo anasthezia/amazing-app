@@ -1,14 +1,15 @@
 import React from 'react'
+import Container from '@material-ui/core/Container'
 import Footer from './Footer'
-import AddTodo from '../../containers/AddTodo'
-import VisibleTodoList from '../../containers/VisibleTodoList'
+import AddTodo from './AddTodo'
+import TodoList from './TodoList'
 
 const Todo = () => (
-  <div>
+<Container maxWidth="md">
     <AddTodo />
-    <VisibleTodoList />
+    <TodoList />
     <Footer />
-  </div>
+  </Container>
 )
 
 export default Todo
